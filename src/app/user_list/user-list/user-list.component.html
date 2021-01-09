@@ -1,0 +1,66 @@
+<app-add-user></app-add-user>
+<div class="container mt-3">
+
+    <!-- <div class="d-flex p-3  text-white"> -->
+
+      <!-- p-2 flex-grow-1 -->
+      <div class="row">
+        <div class="col col-md-9 p-0">
+            <table class="table table-bordered mb-0">
+              <thead>
+                <tr>
+                  <th>Full Name</th>
+                  <th>Date of Birth</th>
+                  <th>Language</th>
+                  <th>Gender</th>
+                  <th>About</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of usrList;">
+
+                      <td>{{data.fullNm}}</td>
+                      <td>{{data.dob}}</td>
+                      <td>{{data.lang}}</td>
+                      <td>{{data.gender}}</td>
+                      <td>{{data.about}}</td>
+
+
+                      <!-- <td>{{data.ID}}</td>
+                      <td>{{data.Name}}</td>
+                      <td>{{data.Age}}</td>
+                      <td>{{data.Gender}}</td>
+                      <td>{{data.Country}}</td> -->
+                    </tr>
+
+              </tbody>
+            </table>
+        </div>
+        <div class="col col-md-3 sidebar">
+          <div class="d-flex align-items-center justify-content-center h-100">
+            <div>
+              <div>
+                <p class="m-0">Display</p>
+                <div class="progress mb-2" style="height:20px">
+                  <div class="progress-bar"
+                  [ngStyle]="{'width': this.data['progress'] + '%'}"></div>
+                </div>
+              </div>
+              <div class="mt-2">
+                <p class="m-0">Female</p>
+              <p class="number">
+               <strong>25</strong>
+              </p>
+              </div>
+              <div class="mt-2">
+                <p class="m-0">Male</p>
+                <p class="number"><strong>25</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- </div> -->
+
+
+  </div>

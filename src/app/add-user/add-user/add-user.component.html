@@ -1,0 +1,100 @@
+<div class="container">
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" [disabled]="data.usrList.length > 10">
+     Add User
+    </button>
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header border-bottom-0">
+          <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="modal-body">
+            <div class="form-group row">
+              <label class="col-sm-4 col-form-label" for="fullNm">Full Name</label>
+              <div class="col-sm-8">
+                  <input type="text" id="fullNm"
+                      formControlName="fullNm" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.fullNm.errors }" >
+              </div>
+              <div *ngIf="submitted && f.fullNm.errors" class="invalid-feedback">
+                <div *ngIf="f.fullNm.errors.required">Full Name is required</div>
+              </div>
+              <!-- <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small> -->
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-4 col-form-label" for="dob">Date Of Birth</label>
+              <div class="input-group col-sm-8">
+                <input type="date" class="form-control " formControlName="dob"
+                [ngClass]="{ 'is-invalid': submitted && f.dob.errors }">
+                <div class="input-group-btn">
+                  <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-calender"></i></button>
+                </div>
+                <div *ngIf="submitted && f.dob.errors" class="invalid-feedback">
+                  <div *ngIf="f.dob.errors.required">Date of Birth is required</div>
+              </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-4 col-form-label" for="lang">Language</label>
+              <div class="col-sm-8">
+              <select class="form-control" id="lang" formControlName="lang"  [ngClass]="{ 'is-invalid': submitted && f.lang.errors }">
+                <option value=""></option>
+                <option value="eng">English</option>
+                <option value="ger">German</option>
+                <option value="span">Spanish</option>
+                <option value="jap">Japanese</option>
+              </select>
+              <div *ngIf="submitted && f.lang.errors" class="invalid-feedback">
+                <div *ngIf="f.lang.errors.required">Language is required</div>
+            </div>
+            </div>
+
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-4 col-form-label" for="gender">Gender:</label>
+              <div class="col-sm-8 genderInline" >
+              <div class="p-2">
+                <input  id="male" type="radio" value="male" name="gender" formControlName="gender">
+                <label for="male">Male</label>
+             </div>
+
+             <div class="p-2">
+                <input id="female" type="radio" value="female" name="gender" formControlName="gender">
+                <label for="female">Female</label>
+             </div>
+
+
+              <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
+                <div *ngIf="f.gender.errors.required">Gender is required</div>
+            </div>
+          </div>
+          </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label" for="about">About</label>
+                <div class="col-sm-8">
+                <textarea class="form-control" rows="5" id="about" formControlName="about" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.about.errors }"></textarea>
+                <div *ngIf="submitted && f.about.errors" class="invalid-feedback">
+                  <div *ngIf="f.about.errors.required">About is required</div>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div class="modal-footer border-top-0 d-flex justify-content-center">
+            <button type="submit" class="btn btn-success" [disabled]="data.usrList.length > 10">Save</button>
+            <!-- <button type="button" class="btn btn-success" (click)="()">Reset</button>//// -->
+          </div>
+          <p>Form Status: {{ registerForm.value|json }}</p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
